@@ -1,0 +1,11 @@
+sudo: required
+language: generic
+
+services:
+    - docker
+
+befere_install:
+    - docker build -t 0xf0d0/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true 0xf0d0/docker-react yarn test -- --coverage
